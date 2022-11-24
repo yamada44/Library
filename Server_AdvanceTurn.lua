@@ -37,7 +37,7 @@ function Server_AdvanceTurn_Order(game, order, result, skipThisOrder, addNewOrde
 		
 		
 -- create 
-		addNewOrder(WL.GameOrderEvent.Create(order.PlayerID, order.Message , {}, {removeFromSource}, nil, {incomeMod})); 
+		addNewOrder(WL.GameOrderEvent.Create(order.PlayerID, order.Message , {targetPlayerID}, {removeFromSource}, nil, {incomeMod})); 
 		-- creates message for players with visibility and handles all modifications for territory
 		
 		
