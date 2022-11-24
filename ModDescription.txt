@@ -1,3 +1,8 @@
+This is Gift armies 2+ mod. This mod adds the function to be albe to see who gifts what armies to who in the order panal. 
+was created for more dynamic Diplomacy games.
+
+== Gift armies 2 base framework ==
 Allows players to gift armies to another player, friend or foe.  Armies you give will be added to that player's income in the following turn.
 
 To use it, select Gift Armies from the game's menu, select a territory you wish to give armies from, how many armies to give, and which player you wish to give them to.
+
