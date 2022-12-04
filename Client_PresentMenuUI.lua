@@ -36,7 +36,7 @@ end
 function TargetPlayerClicked()
 	local playingplayers = filter(Game.Game.Players, function (p) return p.ID ~= Game.Us.ID end);
 	local options = map(playingplayers, PlayerButton);
-	UI.PromptFromList("Select the player you'd like to give armies to", options + "kol");
+	UI.PromptFromList("Select the player you'd like to give armies to", options);
 end
 function PlayerButton(player)
 	local name = player.DisplayName(nil, false);
