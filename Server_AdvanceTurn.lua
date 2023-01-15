@@ -36,12 +36,13 @@ function Server_AdvanceTurn_Order(game, order, result, skipThisOrder, addNewOrde
 		local incomeMod = WL.IncomeMod.Create(targetPlayerID, numArmies, '(public info) An unknown amount of Armies was gifted from ' .. game.Game.Players[order.PlayerID].DisplayName(nil, false) .. ' to ' .. game.Game.Players[targetPlayerID].DisplayName(nil, false));
 		
 		
+		
 -- create 
-		addNewOrder(WL.GameOrderEvent.Create(order.PlayerID, order.Message , {targetPlayerID}, {removeFromSource}, nil, {incomeMod})); 
+		addNewOrder(WL.GameOrderEvent.Create(order.PlayerID, order.Message ,  {targetPlayerID}, {removeFromSource}, nil, {incomeMod})); 
 		-- creates message for players with visibility and handles all modifications for territory
 		
 		
-		addNewOrder(WL.GameOrderEvent.Create(order.PlayerID, incomeMod.Message , nil, {removeFromSource}, nil, {}));
+		addNewOrder(WL.GameOrderEvent.Create(order.PlayerID, incomeMod.Message , nil, nil, nil, {}));
 		-- creates a message for everyone else who can't see the territory. handles no modifications 
 		-- this will create two messages for players who have visibility
 		
