@@ -27,8 +27,8 @@ function Server_AdvanceTurn_Order(game, order, result, skipThisOrder, addNewOrde
 
 		--might get rid of
 		--remove armies from the source territory
-		--local removeFromSource = WL.TerritoryModification.Create(targetTerritoryID);
-		--removeFromSource.SetArmiesTo = game.ServerGame.LatestTurnStanding.Territories[targetTerritoryID].NumArmies.NumArmies - numArmies;
+		local removeFromSource = WL.TerritoryModification.Create(targetTerritoryID);
+		removeFromSource.SetArmiesTo = game.ServerGame.LatestTurnStanding.Territories[targetTerritoryID].NumArmies.NumArmies - numArmies;
 
 		--Add armies to destination player
 
@@ -37,7 +37,8 @@ function Server_AdvanceTurn_Order(game, order, result, skipThisOrder, addNewOrde
 
 		
 -- create 
-		addNewOrder(WL.GameOrderEvent.Create(order.PlayerID, order.Message ,  nil, nil, nil, {})); 
+		
+		addNewOrder(WL.GameOrderEvent.Create(order.PlayerID, order.Message ,  {targetPlayerID}, {removeFromSource}, nil, {incomeMod})); 
 		-- creates message for players with visibility and handles all modifications for territory
 		
 		
