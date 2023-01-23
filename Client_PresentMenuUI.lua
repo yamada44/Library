@@ -24,6 +24,7 @@ function Client_PresentMenuUI(rootParent, setMaxSize, setScrollable, game)
 	UI.CreateLabel(row1).SetText("Gift armies to this player: ");
 	TargetPlayerBtn = UI.CreateButton(row1).SetText("Select player...").SetOnClick(TargetPlayerClicked);
 
+	
 
 	local row2 = UI.CreateHorizontalLayoutGroup(vert);
 	UI.CreateLabel(row2).SetText("Gift armies from this territory: ");
@@ -34,7 +35,7 @@ end
 
 
 function TargetPlayerClicked()
-	local playingplayers = filter(Game.Game.Players, function (p) return p.ID ~= Game.Us.ID end);
+	local playingplayers = filter(Game.Game.Players, function (p) return p.ID end);
 	local options = map(playingplayers, PlayerButton);
 	UI.PromptFromList("Select the player you'd like to give armies to", options);
 end
@@ -93,9 +94,16 @@ end
 function SubmitClicked()
 	if (SelectedTerritory == nil or TargetPlayerID == nil) then return; end;
 
-	local msg = '(Local info) Gifting ' .. NumArmiesInput.GetValue() .. ' armies from ' .. SelectedTerritory.Name .. ' to ' .. Game.Game.Players[TargetPlayerID].DisplayName(nil, false);
 
+
+	local msg = '(Local info) Gifting ' .. NumArmiesInput.GetValue() .. ' armies from ' .. SelectedTerritory.Name .. ' to ' .. Game.Game.Players[TargetPlayerID].DisplayName(nil, false);
 	local payload = 'GiftArmies2_' .. NumArmiesInput.GetValue() .. ',' .. SelectedTerritory.ID .. ',' .. TargetPlayerID;
+	local payload2 = {Armies = NumArmiesInput.GetValue(), TargetPlayerID = TargetPlayerID, targetTerritoryID = SelectedTerritory.ID};
+
+	Game.SendGameCustomMessage(" Test ...", payload2, function(returnValue)
+		UI.Alert(returnValue.Message);
+		--Close(); --Close the dialog since we're done with it
+	end);
 
 	local orders = Game.Orders;
 	table.insert(orders, WL.GameOrderCustom.Create(Game.Us.ID, msg, payload));

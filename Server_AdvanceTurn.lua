@@ -20,27 +20,29 @@ function Server_AdvanceTurn_Order(game, order, result, skipThisOrder, addNewOrde
 		if (numArmies < 0) then numArmies = 0 end;
 		if (numArmies > armiesOnTerritory) then numArmies = armiesOnTerritory end;
 
-		if (targetPlayerID == order.PlayerID) then  --can't gift yourself
+		--[[if (targetPlayerID == order.PlayerID) then  --can't gift yourself
 			skipThisOrder(WL.ModOrderControl.Skip);
 			return;
-		end 
+		end --]]
 
+		--might get rid of
 		--remove armies from the source territory
-		local removeFromSource = WL.TerritoryModification.Create(targetTerritoryID);
-		removeFromSource.SetArmiesTo = game.ServerGame.LatestTurnStanding.Territories[targetTerritoryID].NumArmies.NumArmies - numArmies;
+		--local removeFromSource = WL.TerritoryModification.Create(targetTerritoryID);
+		--removeFromSource.SetArmiesTo = game.ServerGame.LatestTurnStanding.Territories[targetTerritoryID].NumArmies.NumArmies - numArmies;
 
 		--Add armies to destination player
 
-
-		
 		local incomeMod = WL.IncomeMod.Create(targetPlayerID, numArmies, '(public info) An unknown amount of Armies was gifted from ' .. game.Game.Players[order.PlayerID].DisplayName(nil, false) .. ' to ' .. game.Game.Players[targetPlayerID].DisplayName(nil, false));
 		
-		
+
 		
 -- create 
-		addNewOrder(WL.GameOrderEvent.Create(order.PlayerID, order.Message ,  {targetPlayerID}, {removeFromSource}, nil, {incomeMod})); 
+		addNewOrder(WL.GameOrderEvent.Create(order.PlayerID, order.Message ,  nil, nil, nil, {})); 
 		-- creates message for players with visibility and handles all modifications for territory
 		
+		
+		-- --addneworder(game.ServerGame.SetPlayerResource(targetPlayerID, WL.ResourceType.Gold, 0);
+
 		
 		addNewOrder(WL.GameOrderEvent.Create(order.PlayerID, incomeMod.Message , nil, nil, nil, {}));
 		-- creates a message for everyone else who can't see the territory. handles no modifications 
