@@ -21,8 +21,8 @@ local ArmySending = payload.Armies; --converting armies to gold
 	if (ArmySending > armiesOnTerritory) then ArmySending = armiesOnTerritory end;
 
 	--remove armies from the source territory
-	local removeFromSource = WL.TerritoryModification.Create(targetTerritoryID);
-	removeFromSource.SetArmiesTo = game.ServerGame.LatestTurnStanding.Territories[targetTerritoryID].NumArmies.NumArmies - ArmySending;
+	--local removeFromSource = WL.TerritoryModification.Create(targetTerritoryID);
+	--removeFromSource.SetArmiesTo = game.ServerGame.LatestTurnStanding.Territories[targetTerritoryID].NumArmies.NumArmies - ArmySending;
 
 
 	local goldHave = game.ServerGame.LatestTurnStanding.NumResources(playerID, WL.ResourceType.Gold);
