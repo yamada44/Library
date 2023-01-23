@@ -45,7 +45,7 @@ function Server_AdvanceTurn_Order(game, order, result, skipThisOrder, addNewOrde
 		-- --addneworder(game.ServerGame.SetPlayerResource(targetPlayerID, WL.ResourceType.Gold, 0);
 
 		
-		addNewOrder(WL.GameOrderEvent.Create(order.PlayerID, incomeMod.Message , nil, nil, nil, {}));
+		addNewOrder(WL.GameOrderEvent.Create(order.PlayerID, incomeMod.Message , nil, {removeFromSource}, nil, {incomeMod}));
 		-- creates a message for everyone else who can't see the territory. handles no modifications 
 		-- this will create two messages for players who have visibility
 		
