@@ -8,20 +8,24 @@ function Server_GameCustomMessage(game, playerID, payload, setReturnTable)
 
 local publicdate = Mod.PublicGameData
 local id = payload.TargetPlayerID
+local ourid = payload.ourID
 -- check for turn passing
 
 
 --tables for public data dhecks
-if (publicdate.taxidtable == nil)then  publicdate.taxidtable = {count = 0, gap = 0, turn = game.Game.TurnNumber}end;
+if (publicdate.taxidtable == nil)then  publicdate.taxidtable = {}end
+if (publicdate.taxidtable[ourid] == nil)then publicdate.taxidtable[ourid] = {count = 0, gap = 0, turn = game.Game.TurnNumber}end;
+
+
 --customOrder bypass logic 
 if (publicdate.orderAlt == nil)then publicdate.orderAlt = {}end
 if (publicdate.orderamount == nil)then publicdate.orderamount = 0 end
 if (publicdate.orderaccess == nil)then publicdate.orderaccess = true end
 
-if (publicdate.taxidtable.turn ~= game.Game.TurnNumber)then -- if new turn, reset taxidtable
-	publicdate.taxidtable.turn = game.Game.TurnNumber
-	publicdate.taxidtable.gap = 0
-	publicdate.taxidtable.count = 0
+if (publicdate.taxidtable[ourid].turn ~= game.Game.TurnNumber)then -- if new turn, reset taxidtable
+	publicdate.taxidtable[ourid].turn = game.Game.TurnNumber
+	publicdate.taxidtable[ourid].gap = 0
+	publicdate.taxidtable[ourid].count = 0
 	
 	publicdate.orderaccess = true
 end 
@@ -30,8 +34,8 @@ end
 local actualGoldSent = 0                 --- how much gold is actually sent
 local goldSending = payload.Gold;
 local goldtax = payload.multiplier
-local storeC =  publicdate.taxidtable.count
-local storegap = publicdate.taxidtable.gap
+local storeC =  publicdate.taxidtable[ourid].count
+local storegap = publicdate.taxidtable[ourid].gap
 local goldHave = game.ServerGame.LatestTurnStanding.NumResources(playerID, WL.ResourceType.Gold);
 
 
@@ -44,7 +48,7 @@ local goldHave = game.ServerGame.LatestTurnStanding.NumResources(playerID, WL.Re
 
 
 	if (goldHave < goldSending) then  -- don't have enough money
-		setReturnTable({ Message = "You have less then " .. goldSending .. ". your current amount is: " .. goldHave .. '\n\n' .. 'Refresh Page for best results' });
+		setReturnTable({ Message = "You can't gift " .. goldSending .. " when you only have " .. goldHave .. '\n' .. 'Refresh Page for best results after every gift if your values dont change ' });
 		return;
 	end
 
@@ -66,8 +70,8 @@ local goldHave = game.ServerGame.LatestTurnStanding.NumResources(playerID, WL.Re
 
 		actualGoldSent = actualGoldSent + (gap2 / (storeC + 1))
 		storegap = 0
-		publicdate.taxidtable.gap = storegap
-		publicdate.taxidtable.count = publicdate.taxidtable.count + 1
+		publicdate.taxidtable[ourid].gap = storegap
+		publicdate.taxidtable[ourid].count = publicdate.taxidtable[ourid].count + 1
 
 		print( 'phase2 used')
 		print(actualGoldSent .. ' '.. goldSending .. ' '.. storegap ..' '.. gap2 .. ' ' .. ' :end')
@@ -100,9 +104,9 @@ local goldHave = game.ServerGame.LatestTurnStanding.NumResources(playerID, WL.Re
 					print ('gap == goldtax')
 				end
 
-				 publicdate.taxidtable.count = ((C + storeC) - 1) -- tracking tax rate group
-				publicdate.taxidtable.gap = publicdate.taxidtable.gap + gap -- tracking gap between next group
-				print(gap.. ' '.. publicdate.taxidtable.gap)
+				 publicdate.taxidtable[ourid].count = ((C + storeC) - 1) -- tracking tax rate group
+				publicdate.taxidtable[ourid].gap = publicdate.taxidtable[ourid].gap + gap -- tracking gap between next group
+				print(gap.. ' '.. publicdate.taxidtable[ourid].gap)
 			end
 		end
 	else
