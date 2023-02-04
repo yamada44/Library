@@ -22,8 +22,8 @@ if (publicdate.orderamount == nil)then publicdate.orderamount = 0 end
 if (publicdate.orderaccess == nil)then publicdate.orderaccess = true end
 
 if (publicdate.orderaccess == false)then -- if new turn, reset taxidtable
-	publicdate.taxidtable[ourid].gap = 0
-	publicdate.taxidtable[ourid].count = 0
+	publicdate.taxidtable = {}
+	publicdate.taxidtable[ourid] = {count = 0, gap = 0}
 	
 	publicdate.orderaccess = true
 end 
