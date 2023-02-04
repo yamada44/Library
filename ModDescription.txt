@@ -1,3 +1,7 @@
-Allows players to gift armies to another player, friend or foe.  Armies you give will be added to that player's income in the following turn.
+Allows players to gift Gold to each other, friend or foe. All gifts are tracked via the order list and every gift has the option to be revealed to the public for Host purposes or to show whats actaully being gifted to allies. The choice is yours
 
-To use it, select Gift Armies from the game's menu, select a territory you wish to give armies from, how many armies to give, and which player you wish to give them to.
+The option for Gold Multiplier works the same as Army multiplier. except only with gold sent. like army multipiler its reset every turn
+
+The option for Hidden Orders is available. if checked whenever your order is not revealed your identiy will remain hidden. if your gift was revealed all details of your order will become public. if Hidden orders is not checked. your gift gold orders will become vague to everyone else, but they will know you sent it
+
+Have fun and good luck
