@@ -7,7 +7,10 @@ function Client_PresentMenuUI(rootParent, setMaxSize, setScrollable, game, close
 
 	setMaxSize(450, 320);
 	
-
+	 temphidden = Mod.Settings.Hidden -- if game has already started. set values
+	 tempGoldtax = Mod.Settings.GoldTax
+	if(temphidden == nil)then temphidden = false end
+	if(tempGoldtax == nil)then tempGoldtax = 0 end
 	
 
 	local vert = UI.CreateVerticalLayoutGroup(rootParent);
@@ -40,7 +43,7 @@ function Client_PresentMenuUI(rootParent, setMaxSize, setScrollable, game, close
 	UI.CreateButton(vert).SetText("Gift").SetOnClick(SubmitClicked);
 
 	local row3 = UI.CreateHorizontalLayoutGroup(vert);
-	UI.CreateLabel(row3).SetText("Gifting Gold to someone applies a Tax. Tax is equal to " .. Mod.Settings.GoldTax .. " multiplier in game settings")
+	UI.CreateLabel(row3).SetText("Gifting Gold to someone applies a Tax. Tax is equal to " .. tempGoldtax .. " multiplier in game settings")
  
 	local row4 = UI.CreateHorizontalLayoutGroup(vert);
 	Reveal = true
@@ -82,10 +85,7 @@ function SubmitClicked()
 		return;
 	end
 
-	local temphidden = Mod.Settings.Hidden -- if game has already started. set values
-	local tempGoldtax = Mod.Settings.GoldTax
-	if(temphidden == nil)then temphidden = false end
-	if(tempGoldtax == nil)then tempGoldtax = 0 end
+	
 
 
 
