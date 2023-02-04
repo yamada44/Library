@@ -14,16 +14,14 @@ local ourid = payload.ourID
 
 --tables for public data dhecks
 if (publicdate.taxidtable == nil)then  publicdate.taxidtable = {}end
-if (publicdate.taxidtable[ourid] == nil)then publicdate.taxidtable[ourid] = {count = 0, gap = 0, turn = game.Game.TurnNumber}end;
-
+if (publicdate.taxidtable[ourid] == nil)then publicdate.taxidtable[ourid] = {count = 0, gap = 0}end;
 
 --customOrder bypass logic 
 if (publicdate.orderAlt == nil)then publicdate.orderAlt = {}end
 if (publicdate.orderamount == nil)then publicdate.orderamount = 0 end
 if (publicdate.orderaccess == nil)then publicdate.orderaccess = true end
 
-if (publicdate.taxidtable[ourid].turn ~= game.Game.TurnNumber)then -- if new turn, reset taxidtable
-	publicdate.taxidtable[ourid].turn = game.Game.TurnNumber
+if (publicdate.orderaccess == false)then -- if new turn, reset taxidtable
 	publicdate.taxidtable[ourid].gap = 0
 	publicdate.taxidtable[ourid].count = 0
 	
@@ -49,7 +47,7 @@ local goldHave = game.ServerGame.LatestTurnStanding.NumResources(playerID, WL.Re
 
 	if (goldHave < goldSending) then  -- don't have enough money
 		setReturnTable({ Message = "You have less then " .. goldSending .. ". your current amount is: " .. goldHave .. '\n\n' .. 'Refresh Page for best results' });
-		return;
+			return;
 	end
 
 	-- checking to see if a gold tax was set during game creation
