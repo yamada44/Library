@@ -10,11 +10,11 @@ function Server_AdvanceTurn_Order(game, order, result, skipThisOrder, addNewOrde
 		--There wouldn't be any harm in leaving it there, but it adds clutter to the orders 
 		--list so it's better to get rid of it.
 
-		end
+	end
 	
 
 		-- logic to bypass CustomOrder if its been cancelled or removed somehow
-	if(publicgamedata.orderAlt ~= nil and publicgamedata.orderaccess == true)then
+     if(publicgamedata.orderAlt ~= nil and publicgamedata.orderaccess == true)then
 		Game = game
 
 		local hiddenorder = publicgamedata.HiddenOrders
