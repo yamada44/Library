@@ -107,7 +107,7 @@ function SubmitClicked()
 		UI.Alert(returnValue.Message);
 
 		if (returnValue.realGold ~= nil)then
-		local msg = '(Local info) Gifted ' .. returnValue.realGold  .. ' Gold from ' .. Game.Us.DisplayName(nil,false) .. ' to ' .. Game.Game.Players[TargetPlayerID].DisplayName(nil, false);
+		local msg = '(Local info) \n' .. returnValue.realGold  .. ' Gold was gifted from ' .. Game.Us.DisplayName(nil,false) .. ' to ' .. Game.Game.Players[TargetPlayerID].DisplayName(nil, false);
 		local payload = 'GiftGold2' .. gold .. ',' .. returnValue.realGold  .. ',' .. TargetPlayerID;
 		
 
