@@ -26,10 +26,10 @@ function Server_AdvanceTurn_Order(game, order, result, skipThisOrder, addNewOrde
 			local ourid = publicgamedata.orderAlt[i].us
  
 
-			local localmessage = '(Local info) Gifted ' .. goldsent  .. ' Gold from ' .. Game.Game.Players[ourid].DisplayName(nil, false) .. ' to ' .. Game.Game.Players[targetPlayerID].DisplayName(nil, false);
-			local publicmessage =  '(public info) An unknown amount of gold was sent from ' .. Game.Game.Players[ourid].DisplayName(nil, false) .. ' to ' .. Game.Game.Players[targetPlayerID].DisplayName(nil, false)
-			local revealmessage =  '(public info) Gifted ' .. goldsent  .. ' Gold from ' .. Game.Game.Players[ourid].DisplayName(nil, false) .. ' to ' .. Game.Game.Players[targetPlayerID].DisplayName(nil, false)
-			local hiddenmessage =  '(public info) ' .. goldsent .. ' gold was sent from an unknown party to ' .. Game.Game.Players[targetPlayerID].DisplayName(nil, false)
+			local localmessage = '(Local info) \n' .. goldsent  .. ' gold was Gifted from ' .. Game.Game.Players[ourid].DisplayName(nil, false) .. ' to ' .. Game.Game.Players[targetPlayerID].DisplayName(nil, false);
+			local publicmessage =  '(public info) \n An unknown amount of gold was sent from ' .. Game.Game.Players[ourid].DisplayName(nil, false) .. ' to ' .. Game.Game.Players[targetPlayerID].DisplayName(nil, false)
+			local revealmessage =  '(public info) \n' .. goldsent  .. ' Gold was gifted from ' .. Game.Game.Players[ourid].DisplayName(nil, false) .. ' to ' .. Game.Game.Players[targetPlayerID].DisplayName(nil, false)
+			local hiddenmessage =  '(public info) \n' .. goldsent .. ' gold was sent from an unknown party to ' .. Game.Game.Players[targetPlayerID].DisplayName(nil, false)
 
 
 			if(hiddenorder == true and publicgamedata.orderAlt[i].reveal == false)then
