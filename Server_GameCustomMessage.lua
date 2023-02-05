@@ -140,7 +140,7 @@ print ('----------------')
 	local targetPlayer = game.Game.Players[payload.TargetPlayerID];
 	local targetPlayerHasGold = game.ServerGame.LatestTurnStanding.NumResources(targetPlayer.ID, WL.ResourceType.Gold);
 
-
+storeC = 2
 	--Subtract goldSending from ourselves, add goldSending to target
 	game.ServerGame.SetPlayerResource(playerID, WL.ResourceType.Gold, goldHave - goldSending);
 	game.ServerGame.SetPlayerResource(targetPlayer.ID, WL.ResourceType.Gold, targetPlayerHasGold + actualGoldSent);
