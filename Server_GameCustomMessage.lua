@@ -47,7 +47,7 @@ local goldHave = game.ServerGame.LatestTurnStanding.NumResources(playerID, WL.Re
 
 
 	if (goldHave < goldSending) then  -- don't have enough money
-		setReturnTable({ Message = "You have less then " .. goldSending .. " gold. your current amount is: " .. goldHave .. ' gold\n\n' .. 'Refresh Page for best results' });
+		setReturnTable({ Message = "You have less then " .. goldSending .. " gold. your current gold reserve is: " .. goldHave .. '\n\n' .. 'Refresh Page for best results' });
 			return;
 	end
 
