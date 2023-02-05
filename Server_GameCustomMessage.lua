@@ -70,7 +70,7 @@ local goldHave = game.ServerGame.LatestTurnStanding.NumResources(playerID, WL.Re
 		actualGoldSent = actualGoldSent + (gap2 / (storeC + 1))
 		storegap = 0
 		publicdate.taxidtable[ourid].gap = storegap
-		publicdate.taxidtable[ourid].count = publicdate.taxidtable[ourid].count + 1
+		storeC = storeC + 1
 
 		print( 'phase2 used')
 		print(actualGoldSent .. ' '.. goldSending .. ' '.. storegap ..' '.. gap2 .. ' ' .. ' :end')
@@ -140,7 +140,7 @@ print ('----------------')
 	local targetPlayer = game.Game.Players[payload.TargetPlayerID];
 	local targetPlayerHasGold = game.ServerGame.LatestTurnStanding.NumResources(targetPlayer.ID, WL.ResourceType.Gold);
 
-storeC = 2
+
 	--Subtract goldSending from ourselves, add goldSending to target
 	game.ServerGame.SetPlayerResource(playerID, WL.ResourceType.Gold, goldHave - goldSending);
 	game.ServerGame.SetPlayerResource(targetPlayer.ID, WL.ResourceType.Gold, targetPlayerHasGold + actualGoldSent);
