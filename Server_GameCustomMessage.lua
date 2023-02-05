@@ -32,6 +32,7 @@ end
 local actualGoldSent = 0                 --- how much gold is actually sent
 local goldSending = payload.Gold;
 local goldtax = payload.multiplier
+local gap2 = 0
 local storeC =  publicdate.taxidtable[ourid].count
 local storegap = publicdate.taxidtable[ourid].gap
 local goldHave = game.ServerGame.LatestTurnStanding.NumResources(playerID, WL.ResourceType.Gold);
@@ -57,11 +58,11 @@ local goldHave = game.ServerGame.LatestTurnStanding.NumResources(playerID, WL.Re
 	print (storeC .. ' :storeC')
 	-- keeping track wheather or not players have exceeded tax by adding gap gold from last gift
 	if (storegap + goldSending > goldtax and storegap > 0 )then
-		local gap2 = goldtax - storegap
+		gap2 = goldtax - storegap
 
 		print(goldSending .. ' :goldsending')
 
-		goldSending = goldSending - gap2
+		
 
 		print( 'phase1 used')
 		print(actualGoldSent .. ' '.. goldSending .. ' '.. storegap .. ' ' .. storeC.. ' :end')
@@ -81,7 +82,7 @@ local goldHave = game.ServerGame.LatestTurnStanding.NumResources(playerID, WL.Re
 -- tax multiplier logic
 	if (goldtax > 0 )then -- if 0, host wants no Tax applied
 	local ga = goldtax        --- how many units in each group
-	local group = math.ceil(goldSending / ga)                  --- how many groups of Ga are in goldsending
+	local group = math.ceil((goldSending - gap2) / ga)                  --- how many groups of Ga are in goldsending
 
 
 		for C = 1, group, 1 do
@@ -90,7 +91,7 @@ local goldHave = game.ServerGame.LatestTurnStanding.NumResources(playerID, WL.Re
 				actualGoldSent = actualGoldSent + (ga / (C + storeC)) --appliy Tax to gold divided into groups
 
 			elseif (C >= group) then -- this means your in the last group
-				local gap = goldSending - (ga * (C-1)) -- finding the difference between the last group and current amount in 'actualGoldSent'
+				local gap = (goldSending-gap2) - (ga * (C-1)) -- finding the difference between the last group and current amount in 'actualGoldSent'
 				actualGoldSent = actualGoldSent + (gap / (C + storeC))
 
 
@@ -108,7 +109,7 @@ local goldHave = game.ServerGame.LatestTurnStanding.NumResources(playerID, WL.Re
 			end
 		end
 	else
-		actualGoldSent = goldSending;
+		actualGoldSent = (goldSending+gap2);
 
 	end
 
