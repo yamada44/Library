@@ -19,17 +19,19 @@ function Server_AdvanceTurn_Order(game, order, result, skipThisOrder, addNewOrde
 
 		local hiddenorder = publicgamedata.HiddenOrders
 
+		if (publicgamedata.trannum == nil)then publicgamedata.trannum = 1 end --keeping track of transactions to properly track
+		local transactionNumber = publicgamedata.trannum
+
 		for i,v in pairs(publicgamedata.orderAlt) do
 
-				local targetPlayerID = publicgamedata.orderAlt[i].targetPlayer
+			local targetPlayerID = publicgamedata.orderAlt[i].targetPlayer
 			local goldsent = publicgamedata.orderAlt[i].realgold
 			local ourid = publicgamedata.orderAlt[i].us
- 
 
-			local localmessage = '(Local info) \n' .. goldsent  .. ' gold sent from ' .. Game.Game.Players[ourid].DisplayName(nil, false) .. ' to ' .. Game.Game.Players[targetPlayerID].DisplayName(nil, false);
-			local publicmessage =  '(public info) \n Unknown amount of gold sent from ' .. Game.Game.Players[ourid].DisplayName(nil, false) .. ' to ' .. Game.Game.Players[targetPlayerID].DisplayName(nil, false)
-			local revealmessage =  '(public info) \n' .. goldsent  .. ' gold sent from ' .. Game.Game.Players[ourid].DisplayName(nil, false) .. ' to ' .. Game.Game.Players[targetPlayerID].DisplayName(nil, false)
-			local hiddenmessage =  '(public info) \n' .. goldsent .. ' gold sent from an unknown party to ' .. Game.Game.Players[targetPlayerID].DisplayName(nil, false)
+			local localmessage = '(Local info) \n' .. goldsent  .. ' gold sent from ' .. Game.Game.Players[ourid].DisplayName(nil, false) .. ' to ' .. Game.Game.Players[targetPlayerID].DisplayName(nil, false) .. '\n#:' .. transactionNumber;
+			local publicmessage =  '(public info) \n Unknown amount of gold sent from ' .. Game.Game.Players[ourid].DisplayName(nil, false) .. ' to ' .. Game.Game.Players[targetPlayerID].DisplayName(nil, false) .. '\n#:' .. transactionNumber
+			local revealmessage =  '(public info) \n' .. goldsent  .. ' gold sent from ' .. Game.Game.Players[ourid].DisplayName(nil, false) .. ' to ' .. Game.Game.Players[targetPlayerID].DisplayName(nil, false) .. '\n#:' .. transactionNumber
+			local hiddenmessage =  '(public info) \n' .. goldsent .. ' gold sent from an unknown party to ' .. Game.Game.Players[targetPlayerID].DisplayName(nil, false) .. '\n#:' .. transactionNumber
 
 
 			if(hiddenorder == true and publicgamedata.orderAlt[i].reveal == false)then
@@ -51,11 +53,11 @@ function Server_AdvanceTurn_Order(game, order, result, skipThisOrder, addNewOrde
 			end
 		
 
+			transactionNumber = transactionNumber + 1
 
+		end
 
-			end
-
-
+		publicgamedata.trannum = transactionNumber
 		publicgamedata.orderaccess = false
 		publicgamedata.orderAlt = {}
 		publicgamedata.orderamount = 0
