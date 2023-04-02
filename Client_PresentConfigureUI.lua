@@ -7,7 +7,7 @@ function Client_PresentConfigureUI(rootParent)
 	local percent = Mod.Settings.Percent
 
 	if goldtax == nil then goldtax = 0; end
-	if percent == nil then percent = false end
+	if percent == nil then percent = 0 end
 
     if (hiddengold == nil)then hiddengold = false end  
 
@@ -23,8 +23,10 @@ function Client_PresentConfigureUI(rootParent)
 		.SetSliderMaxValue(200)
 		.SetValue(goldtax);
 
-		UI.CreateLabel(row1).SetText('- Gold Taxed by Percent instead: \n-0 means no tax');
-		PercentInputField = UI.CreateNumberInputField(row1)
+	local row2 = UI.CreateHorizontalLayoutGroup(vert);
+
+		UI.CreateLabel(row2).SetText('- Gold Taxed by Percent instead: \n-0 means no tax');
+		PercentInputField = UI.CreateNumberInputField(row2)
 			.SetSliderMinValue(0)
 			.SetSliderMaxValue(100)
 			.SetValue(percent);
