@@ -15,7 +15,7 @@ function Client_PresentSettingsUI(rootParent)
 		UI.CreateLabel(rootParent).SetText('Players gifted gold are Taxed ' .. percent .. '% for every transfer');
 	else
 		UI.CreateLabel(rootParent).SetText('Tax Mode: None').SetColor('#00F4FF')
-		UI.CreateLabel(rootParent).SetText('Gifts are free to be handed out without Tax');
+		UI.CreateLabel(rootParent).SetText('Gold is free to be gifted without Tax');
 
 	end
 
