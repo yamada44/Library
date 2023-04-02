@@ -1,6 +1,9 @@
 
 function Client_PresentSettingsUI(rootParent)
 
+local percent = Mod.Settings.Percent -- for games that are already running
+if percent == nil then percent = 0 end
+
 	if Mod.Settings.GoldTax > 0 then
 		UI.CreateLabel(rootParent).SetText('Tax Mode: Tax multiplier').SetColor('#00F4FF')
 
