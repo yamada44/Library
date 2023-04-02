@@ -6,7 +6,7 @@ function Client_PresentSettingsUI(rootParent)
 
 	UI.CreateLabel(rootParent).SetText('Players gifted gold are Taxed 1 peice of gold every time they exceed this number ( ' .. Mod.Settings.GoldTax .. ' ) ');
 	elseif Mod.Settings.Percent > 0 then
-		UI.CreateLabel(rootParent).SetText('Tax Mode: Percent').SetColor('#BABABC')
+		UI.CreateLabel(rootParent).SetText('Tax Mode: Percent').SetColor('#6C73D1')
 		UI.CreateLabel(rootParent).SetText('Players gifted gold are Taxed ' .. Mod.Settings.Percent .. '% for every transfer');
 	else
 		UI.CreateLabel(rootParent).SetText('Tax Mode: None').SetColor('#4169E1')
