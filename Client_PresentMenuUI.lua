@@ -46,7 +46,14 @@ function Client_PresentMenuUI(rootParent, setMaxSize, setScrollable, game, close
 	UI.CreateButton(vert).SetText("Gift").SetOnClick(SubmitClicked);
 
 	local row3 = UI.CreateHorizontalLayoutGroup(vert);
-	UI.CreateLabel(row3).SetText("Gifting Gold to someone applies a Tax. Tax is equal to " .. tempGoldtax .. " multiplier in game settings")
+
+	if (tempGoldtax > 0 )then
+	UI.CreateLabel(row3).SetText("Gifting Gold to someone applies a Tax. Tax is equal to " .. tempGoldtax .. " multiplier in game settings").SetColor('00F4FF')
+	elseif (temppercent > 0)then
+		UI.CreateLabel(row3).SetText("Gifting Gold to someone applies a Tax. Tax is equal to " .. tempGoldtax .. " Percent").SetColor('00F4FF')
+	else 
+		UI.CreateLabel(row3).SetText("No Tax Applied").SetColor('00F4FF')
+	end
  
 	local row4 = UI.CreateHorizontalLayoutGroup(vert);
 	Reveal = true
