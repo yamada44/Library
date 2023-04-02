@@ -9,7 +9,7 @@ function Client_PresentMenuUI(rootParent, setMaxSize, setScrollable, game, close
 	
 	 temphidden = Mod.Settings.Hidden -- if game has already started. set values
 	 tempGoldtax = Mod.Settings.GoldTax
-	 temppercent = Mod.Settings.Percent
+	 Temppercent = Mod.Settings.Percent
 	if(temphidden == nil)then temphidden = false end
 	if(tempGoldtax == nil)then tempGoldtax = 0 end
 	if(Temppercent == nil)then Temppercent = 0 end
