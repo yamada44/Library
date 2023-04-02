@@ -12,7 +12,7 @@ function Client_PresentMenuUI(rootParent, setMaxSize, setScrollable, game, close
 	 temppercent = Mod.Settings.Percent
 	if(temphidden == nil)then temphidden = false end
 	if(tempGoldtax == nil)then tempGoldtax = 0 end
-	if(temppercent == nil)then temppercent = 0 end
+	if(Temppercent == nil)then Temppercent = 0 end
 
 	
 
@@ -49,8 +49,8 @@ function Client_PresentMenuUI(rootParent, setMaxSize, setScrollable, game, close
 
 	if (tempGoldtax > 0 )then
 	UI.CreateLabel(row3).SetText("Gifting Gold to someone applies a Tax. Tax is equal to " .. tempGoldtax .. " multiplier in game settings").SetColor('#00F4FF')
-	elseif (temppercent > 0)then
-		UI.CreateLabel(row3).SetText("Gifting Gold to someone applies a Tax. Tax is equal to " .. tempGoldtax .. " Percent").SetColor('#00F4FF')
+	elseif (Temppercent > 0)then
+		UI.CreateLabel(row3).SetText("Gifting Gold to someone applies a Tax. Tax is equal to " .. Temppercent .. " Percent").SetColor('#00F4FF')
 	else 
 		UI.CreateLabel(row3).SetText("No Tax Applied").SetColor('#00F4FF')
 	end
