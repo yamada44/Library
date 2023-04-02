@@ -32,6 +32,7 @@ end
 local actualGoldSent = 0                 --- how much gold is actually sent
 local goldSending = payload.Gold;
 local goldtax = payload.multiplier
+local percent = payload.percent
 local gap2 = 0
 local storeC =  publicdate.taxidtable[ourid].count
 local storegap = publicdate.taxidtable[ourid].gap
@@ -108,10 +109,17 @@ local goldHave = game.ServerGame.LatestTurnStanding.NumResources(playerID, WL.Re
 				print(gap.. ' '.. publicdate.taxidtable[ourid].gap)
 			end
 		end
+	
+	elseif (percent > 0 )then
+		local temppercent = 100 - percent
+		local percentGold = goldSending * (temppercent / 100)
+		actualGoldSent = (percentGold+gap2);
+
 	else
 		actualGoldSent = (goldSending+gap2);
 
 	end
+ 
 
 print ('----------------')
 	actualGoldSent = math.floor(actualGoldSent)

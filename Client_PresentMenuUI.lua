@@ -9,8 +9,11 @@ function Client_PresentMenuUI(rootParent, setMaxSize, setScrollable, game, close
 	
 	 temphidden = Mod.Settings.Hidden -- if game has already started. set values
 	 tempGoldtax = Mod.Settings.GoldTax
+	 temppercent = Mod.Settings.Percent
 	if(temphidden == nil)then temphidden = false end
 	if(tempGoldtax == nil)then tempGoldtax = 0 end
+	if(temppercent == nil)then temppercent = 0 end
+
 	
 
 	local vert = UI.CreateVerticalLayoutGroup(rootParent);
@@ -97,6 +100,7 @@ function SubmitClicked()
 	payload.ourID = Game.Us.ID
 	payload.reveal = Reveal.GetIsChecked()
 	payload.hidden = temphidden
+	payload.percent = temppercent
 	
 ----------------------- new shit
 
