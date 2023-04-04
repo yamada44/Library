@@ -107,7 +107,7 @@ function SubmitClicked()
 	payload.ourID = Game.Us.ID
 	payload.reveal = Reveal.GetIsChecked()
 	payload.hidden = temphidden
-	payload.percent = temppercent
+	payload.percent = Temppercent
 	
 ----------------------- new shit
 
