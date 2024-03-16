@@ -4,7 +4,7 @@ function Server_AdvanceTurn_Order(game, order, result, skipThisOrder, addNewOrde
 	local publicgamedata = Mod.PublicGameData
 
     if (order.proxyType == 'GameOrderCustom' and startsWith(order.Payload, 'GiftGold2')) then  --look for the order that we inserted in Client_PresentMenuUI
-		skipThisOrder(WL.ModOrderControl.SkipAndSupressSkippedMessage); 
+		skipThisOrder(WL.ModOrderControl.SkipAndSupressSkippedMessage) 
 		--we replaced the GameOrderCustom with a GameOrderEvent, so get rid of the custom order.  
 		--There wouldn't be any harm in leaving it there, but it adds clutter to the orders 
 		--list so it's better to get rid of it.
