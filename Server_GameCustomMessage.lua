@@ -175,7 +175,7 @@ function Paymentprocess(game,playerID,payload,setReturnTable,publicdate)
 			local standing = game.ServerGame.LatestTurnStanding
 			local player = game.Game.PlayingPlayers[ourid]
 			local income = {Total = 0}
-			if player ~= nil and player > 0 then
+			if player ~= nil then
 				income = nil
 				income = player.Income(0, standing, false, false) end
 			print(#publicdate.PayP.Plan,"plans")
