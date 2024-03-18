@@ -174,7 +174,10 @@ function Paymentprocess(game,playerID,payload,setReturnTable,publicdate)
 		if newPlan > 0 then -- Adding continued/Set turns logic
 			local standing = game.ServerGame.LatestTurnStanding
 			local player = game.Game.PlayingPlayers[ourid]
-			local income = player.Income(0, standing, false, false) 
+			local income = {Total = 0}
+			if player ~= nil or player > 0 then
+				income = nil
+				income = player.Income(0, standing, false, false) end
 			print(#publicdate.PayP.Plan,"plans")
 			local tempgold = 0 
 			if newPlan == 2 then tempgold = setgold end
