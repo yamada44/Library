@@ -40,7 +40,7 @@ function Client_PresentMenuUI(rootParent, setMaxSize, setScrollable, game, close
 		UI.CreateLabel(vert).SetText("This mod only works in commerce games.  This isn't a commerce game.");
 		return;
 	end
-	if game.us.HasCommittedOrders == false then
+	if game.Us.HasCommittedOrders == false then
 		UI.CreateLabel(vert).SetText("you must uncommit to use this mod");
 	end
 
