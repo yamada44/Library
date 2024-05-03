@@ -8,7 +8,7 @@ function Client_PresentMenuUI(rootParent, setMaxSize, setScrollable, game, close
 	Game = game;
 	Close = close;
 	publicdate = Mod.PublicGameData
-	
+
 
 	setMaxSize(600, 320)
 	local vert = UI.CreateVerticalLayoutGroup(rootParent);
@@ -39,6 +39,9 @@ function Client_PresentMenuUI(rootParent, setMaxSize, setScrollable, game, close
 	if (game.Settings.CommerceGame == false) then
 		UI.CreateLabel(vert).SetText("This mod only works in commerce games.  This isn't a commerce game.");
 		return;
+	end
+	if game.us.HasCommittedOrders == false then
+		UI.CreateLabel(vert).SetText("you must uncommit to use this mod");
 	end
 
 	-- updated features here
