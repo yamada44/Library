@@ -41,8 +41,10 @@ function Client_PresentMenuUI(rootParent, setMaxSize, setScrollable, game, close
 		return;
 	end
 	if game.Us.HasCommittedOrders == true then
-		UI.CreateLabel(vert).SetText("you must uncommit to use this mod")
+		UI.CreateLabel(vert).SetText("you must uncommit to use this mod. you may view gold history though")
+		UI.CreateButton(vert).SetText("Payment History").SetOnClick(function () Dialogwindow(3,close,nil) end ).SetInteractable(not temphidden)
 		return
+		
 	end
 
 	-- updated features here
