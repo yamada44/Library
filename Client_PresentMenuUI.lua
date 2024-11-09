@@ -375,6 +375,11 @@ function OptionAfunc(vert)
 		print(v.to)
 		print(Entities)
 		print(Entities[v.to],"v.to")
+		print(Entities[v.to].Name,"v.to")
+		print(Entities[v.from],"v.to")
+		print(Entities[v.from].Name,"v.to")
+
+
 		table.insert(Destroygroup,row1)
 		table.insert(Destroygroup,row2)
 		local spacer = v.goldamount
