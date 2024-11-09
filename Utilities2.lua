@@ -1,21 +1,4 @@
-function Dump(obj)
-	if obj.proxyType ~= nil then
-		DumpProxy(obj);
-	elseif type(obj) == 'table' then
-		DumpTable(obj);
-	else
-		print('Dump ' .. type(obj));
-	end
-end
-function DumpTable(tbl)
-    for k,v in pairs(tbl) do
-        print('k = ' .. tostring(k) .. ' (' .. type(k) .. ') ' .. ' v = ' .. tostring(v) .. ' (' .. type(v) .. ')');
-    end
-end
-function DumpProxy(obj)
-
-    print('type=' .. obj.proxyType .. ' readOnly=' .. tostring(obj.readonly) .. ' readableKeys=' .. table.concat(obj.readableKeys, ',') .. ' writableKeys=' .. table.concat(obj.writableKeys, ','));
-end
+--This file contains utility functions that could be used in any lua project.
 
 function split(str, pat)
    local t = {}  -- NOTE: use {n = 0} in Lua-5.0
@@ -78,7 +61,6 @@ end
 function startsWith(str, sub)
 	return string.sub(str, 1, string.len(sub)) == sub;
 end
-
 function SortTable(tableinput,field)
 	local newtable = {}
 	
