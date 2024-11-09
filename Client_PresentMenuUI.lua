@@ -848,8 +848,8 @@ function GlobalFarm(ID)
    MaxTurns = 20
    GlobalID = ID
    KickInput = nil
-   AccountCost = Mod.Settings.ACost or 0
-   AccountTax = Mod.Settings.ATax or 0
+   AccountCost = Mod.Settings.ACost or Mod.Settings.GoldTax * 2.5
+   AccountTax = Mod.Settings.ATax or Mod.Settings.GoldTax * 3
    TurnsNeededInAccount = 1
 
 
