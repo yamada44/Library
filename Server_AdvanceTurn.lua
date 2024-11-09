@@ -25,7 +25,7 @@ function Server_AdvanceTurn_Order(game, order, result, skipThisOrder, addNewOrde
 				local goldsent = publicgamedata.orderAlt[i].realgold
 				local ourid = publicgamedata.orderAlt[i].us
 				local MyID = publicgamedata.Entity[ourid].ID
-				local Trannumber = publicgamedata.orderAlt[i].Trannumber
+				local Trannumber = publicgamedata.orderAlt[i].Trannumber or "Transaction"
 				if MyID < 0 then MyID = 0 end
 
 				local localmessage = '(Local info) \n' .. goldsent  .. ' gold sent from ' .. publicgamedata.Entity[ourid].Name .. ' to ' .. publicgamedata.Entity[targetPlayerID].Name .. '\n#:' .. Trannumber;
