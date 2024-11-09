@@ -335,9 +335,9 @@ function DataCheck(publicdate,payload,game)
 	publicdate.ServerAccess = false
 
 	--entities creation
-	--if publicdate.Entity == nil then publicdate.Entity = {} 
+	if publicdate.Entity == nil then publicdate.Entity = {} 
 	PlayerEntityCreation(publicdate)
-	--end
+	end
 	--updating all entities
 	EntityUpdate(publicdate)
 	-- Voting Time Update
