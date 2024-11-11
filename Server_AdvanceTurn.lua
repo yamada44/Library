@@ -26,10 +26,11 @@ function Server_AdvanceTurn_Order(game, order, result, skipThisOrder, addNewOrde
 				local ourid = publicgamedata.orderAlt[i].us
 				local MyID = publicgamedata.Entity[ourid].ID
 				local Trannumber = publicgamedata.orderAlt[i].Trannumber or 'Transaction'
+				print( Trannumber,"Trans")
+				print(i,v)
 				print(publicgamedata.orderAlt[i],"Trans")
 				print(publicgamedata.Entity[ourid],"Trans")
 
-				print( Trannumber,"Trans")
 
 				if MyID < 0 then MyID = 0 end
 
