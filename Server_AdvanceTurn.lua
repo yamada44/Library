@@ -26,16 +26,13 @@ function Server_AdvanceTurn_Order(game, order, result, skipThisOrder, addNewOrde
 				local ourid = publicgamedata.orderAlt[i].us
 				local MyID = publicgamedata.Entity[ourid].ID
 				local Trannumber = publicgamedata.orderAlt[i].Trannumber or 'Transaction'
-				local Ourname = publicgamedata.Entity[ourid].Name or "playerA"
-				local targetname = publicgamedata.Entity[targetPlayerID].Name or "PlayerB"
-
 
 				if MyID < 0 then MyID = 0 end
 
-				local localmessage = '(Local info) \n' .. goldsent  .. ' gold sent from ' .. Ourname .. ' to ' .. targetname .. '\n#:' .. Trannumber
-				local publicmessage =  '(public info) \nUnknown amount of gold sent from ' .. Ourname .. ' to ' .. targetname .. '\n#:' .. Trannumber
-				local revealmessage =  '(public info) \n' .. goldsent  .. ' gold sent from ' .. Ourname .. ' to ' .. targetname .. '\n#:' .. Trannumber
-				local hiddenmessage =  '(public info) \n' .. goldsent .. ' gold sent from an unknown party to ' .. targetname .. '\n#:' .. Trannumber
+				local localmessage = '(Local info) \n' .. goldsent  .. ' gold sent from ' .. publicgamedata.Entity[ourid].Name .. ' to ' .. publicgamedata.Entity[targetPlayerID].Name .. '\n#:' .. Trannumber
+				local publicmessage =  '(public info) \nUnknown amount of gold sent from ' .. publicgamedata.Entity[ourid].Name .. ' to ' .. publicgamedata.Entity[targetPlayerID].Name .. '\n#:' .. Trannumber
+				local revealmessage =  '(public info) \n' .. goldsent  .. ' gold sent from ' .. publicgamedata.Entity[ourid].Name .. ' to ' .. publicgamedata.Entity[targetPlayerID].Name .. '\n#:' .. Trannumber
+				local hiddenmessage =  '(public info) \n' .. goldsent .. ' gold sent from an unknown party to ' .. publicgamedata.Entity[targetPlayerID].Name .. '\n#:' .. Trannumber
 
 
 				if(hiddenorder == true and publicgamedata.orderAlt[i].reveal == false)then
@@ -55,19 +52,13 @@ function Server_AdvanceTurn_Order(game, order, result, skipThisOrder, addNewOrde
 					-- creates a message for everyone else who can't see the territory. handles no modifications 
 					-- this will create two messages for players who have visibility
 				end
-				
-
-
-
-				
-
-				publicgamedata.orderaccess = false
-				publicgamedata.orderAlt = {}
-				publicgamedata.orderamount = 0
-				if publicgamedata.PayP ~= nil then
-				publicgamedata.PayP.accessed = false end
-
+			
 			end
+			publicgamedata.orderaccess = false
+			publicgamedata.orderAlt = {}
+			publicgamedata.orderamount = 0
+			if publicgamedata.PayP ~= nil then
+			publicgamedata.PayP.accessed = false end
 		end
 	
 
