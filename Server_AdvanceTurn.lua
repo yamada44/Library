@@ -13,17 +13,10 @@ function Server_AdvanceTurn_Order(game, order, result, skipThisOrder, addNewOrde
 	
 	if publicgamedata.ServerAccess == false then
 			-- logic to bypass CustomOrder if its been cancelled or removed somehow
-			local hiddenorder = publicgamedata.HiddenOrders
-			publicgamedata.orderaccess = false
-			publicgamedata.orderAlt = {}
-			publicgamedata.orderamount = 0
-			if publicgamedata.PayP ~= nil then
-			publicgamedata.PayP.accessed = false end
-
-
-
 		if(publicgamedata.orderAlt ~= nil and publicgamedata.orderaccess == true)then
 			Game = game
+
+			local hiddenorder = publicgamedata.HiddenOrders
 
 
 			for i,v in pairs(publicgamedata.orderAlt) do
@@ -33,11 +26,6 @@ function Server_AdvanceTurn_Order(game, order, result, skipThisOrder, addNewOrde
 				local ourid = publicgamedata.orderAlt[i].us
 				local MyID = publicgamedata.Entity[ourid].ID
 				local Trannumber = publicgamedata.orderAlt[i].Trannumber or 'Transaction'
-				print( Trannumber,"Trans")
-				print(i,v)
-				print(publicgamedata.orderAlt[i],"Trans")
-				print(publicgamedata.Entity[ourid],"Trans")
-
 
 				if MyID < 0 then MyID = 0 end
 
