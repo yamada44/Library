@@ -17,7 +17,11 @@ function Server_AdvanceTurn_Order(game, order, result, skipThisOrder, addNewOrde
 			Game = game
 
 			local hiddenorder = publicgamedata.HiddenOrders
-
+			publicgamedata.orderaccess = false
+			publicgamedata.orderAlt = {}
+			publicgamedata.orderamount = 0
+			if publicgamedata.PayP ~= nil then
+			publicgamedata.PayP.accessed = false end
 
 			for i,v in pairs(publicgamedata.orderAlt) do
 
