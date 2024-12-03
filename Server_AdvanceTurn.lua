@@ -17,11 +17,7 @@ function Server_AdvanceTurn_Order(game, order, result, skipThisOrder, addNewOrde
 			Game = game
 
 			local hiddenorder = publicgamedata.HiddenOrders
-			publicgamedata.orderaccess = false
-			publicgamedata.orderAlt = {}
-			publicgamedata.orderamount = 0
-			if publicgamedata.PayP ~= nil then
-			publicgamedata.PayP.accessed = false end
+
 
 			for i,v in pairs(publicgamedata.orderAlt) do
 
@@ -32,13 +28,12 @@ function Server_AdvanceTurn_Order(game, order, result, skipThisOrder, addNewOrde
 				local Trannumber = publicgamedata.orderAlt[i].Trannumber or 'Transaction'
 
 				if MyID < 0 then MyID = 0 end
-				
-					
-				local localmessage = '(Local info) \n'-- .. goldsent  .. ' gold sent from ' .. publicgamedata.Entity[ourid].Name .. ' to ' .. publicgamedata.Entity[targetPlayerID].Name .. '\n#:' .. Trannumber
-				local publicmessage =  '(public info) \nUnknown amount of gold sent from '-- .. publicgamedata.Entity[ourid].Name .. ' to ' .. publicgamedata.Entity[targetPlayerID].Name .. '\n#:' .. Trannumber
-				local revealmessage =  '(public info) \n'-- .. goldsent  .. ' gold sent from ' .. publicgamedata.Entity[ourid].Name .. ' to ' .. publicgamedata.Entity[targetPlayerID].Name .. '\n#:' .. Trannumber
-				local hiddenmessage =  '(public info) \n'-- .. goldsent .. ' gold sent from an unknown party to ' .. publicgamedata.Entity[targetPlayerID].Name .. '\n#:' .. Trannumber
-				
+
+				local localmessage = '(Local info) \n' .. goldsent  .. ' gold sent from ' .. publicgamedata.Entity[ourid].Name .. ' to ' .. publicgamedata.Entity[targetPlayerID].Name .. '\n#:' .. Trannumber
+				local publicmessage =  '(public info) \nUnknown amount of gold sent from ' .. publicgamedata.Entity[ourid].Name .. ' to ' .. publicgamedata.Entity[targetPlayerID].Name .. '\n#:' .. Trannumber
+				local revealmessage =  '(public info) \n' .. goldsent  .. ' gold sent from ' .. publicgamedata.Entity[ourid].Name .. ' to ' .. publicgamedata.Entity[targetPlayerID].Name .. '\n#:' .. Trannumber
+				local hiddenmessage =  '(public info) \n' .. goldsent .. ' gold sent from an unknown party to ' .. publicgamedata.Entity[targetPlayerID].Name .. '\n#:' .. Trannumber
+
 
 				if(hiddenorder == true and publicgamedata.orderAlt[i].reveal == false)then
 					addNewOrder(WL.GameOrderEvent.Create(MyID, localmessage ,  {targetPlayerID}, nil, nil, {})); 
