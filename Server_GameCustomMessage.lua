@@ -431,7 +431,6 @@ function AccountCreation(payload,publicdate,setReturnTable)
 
 	if publicdate.Entity[publicdate.GlobalIDs] == nil then publicdate.Entity[publicdate.GlobalIDs] = {}
 		local short = publicdate.Entity[publicdate.GlobalIDs]
-			print(#payload.members,"member amount")
 		 -- creating an account
 			short.Name = payload.Accountname
 			short.ID = publicdate.GlobalIDs

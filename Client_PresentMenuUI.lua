@@ -1106,6 +1106,7 @@ function CrunchNumbers(Tax,Percent,truetax)
 	local goldSending = CalGold.GetValue()
 
 
+
 	--Tax Logic
 	if (storegap + goldSending > goldtax and storegap > 0 )then
 		gap2 = goldtax - storegap
@@ -1141,7 +1142,9 @@ function CrunchNumbers(Tax,Percent,truetax)
 		actualGoldSent = (goldSending)
 
 	end
-
+	CalTax.SetText(gap2.. "gap2").SetColor("#FF697A")
+	CalTax.SetText(storeC.. "storeC").SetColor("#FF697A")
+	CalTax.SetText(storegap.. "storegap").SetColor("#FF697A")
 
 
 	CalSent.SetText(goldSending).SetColor("#45ad1c")
