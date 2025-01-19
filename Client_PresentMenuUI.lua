@@ -1011,7 +1011,7 @@ function OwnerHistory(rootParent, setMaxSize, setScrollable, game, close)
 	local OwnerHist = Datatransfer
 
 
-	if OwnerHist ~= nil and #OwnerHist ~= 0 then
+	if OwnerHist ~= nil and #OwnerHist > 0 then
 		print(#OwnerHist,"ownerhist")
 		local SortedT = SortTable(OwnerHist,"Turn")
 		local turn = 0
@@ -1031,6 +1031,7 @@ function OwnerHistory(rootParent, setMaxSize, setScrollable, game, close)
 		end
 	else
 		UI.CreateLabel(row0).SetText("Owners are added at turn end. wait for turn to process") 
+		UI.CreateLabel(row0).SetText(#OwnerHist .. " owner amount") 
 
 	end
 end

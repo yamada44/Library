@@ -62,7 +62,7 @@ function Server_AdvanceTurn_Order(game, order, result, skipThisOrder, addNewOrde
 		end
 	
 
-		publicgamedata.Entity = AccountEntityUpdate(publicgamedata,publicgamedata.Entity,game)
+		publicgamedata.Entity = AccountEntityUpdate(publicgamedata.Entity,game)
 		publicgamedata.ServerAccess = nil
 
 		Mod.PublicGameData = publicgamedata
@@ -71,7 +71,7 @@ function Server_AdvanceTurn_Order(game, order, result, skipThisOrder, addNewOrde
 end
 
 --At the moment only updating member list history
-function AccountEntityUpdate(publicgamedata,Entity,Game)
+function AccountEntityUpdate(Entity,Game)
 
 	for i,v in pairs (Entity) do
 		if v.Status == "A" then
