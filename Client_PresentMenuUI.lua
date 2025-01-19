@@ -1047,7 +1047,11 @@ function Calculator (rootParent, setMaxSize, setScrollable, game, close)
 	local row3 = UI.CreateHorizontalLayoutGroup(vert)
 	local row4 = UI.CreateHorizontalLayoutGroup(vert)
 	local row5 = UI.CreateHorizontalLayoutGroup(vert)
-	local row6 = UI.CreateHorizontalLayoutGroup(vert)
+	 row6 = UI.CreateHorizontalLayoutGroup(vert)
+	 row7 = UI.CreateHorizontalLayoutGroup(vert)
+	 row8 = UI.CreateHorizontalLayoutGroup(vert)
+
+	 
 	local tax = tempGoldtax
 	local secondtax = tempGoldtax
 	local accounttax = AccountTax
@@ -1142,9 +1146,19 @@ function CrunchNumbers(Tax,Percent,truetax)
 		actualGoldSent = (goldSending)
 
 	end
-	CalTax.SetText(gap2.. "gap2").SetColor("#FF697A")
-	CalTax.SetText(storeC.. "storeC").SetColor("#FF697A")
-	CalTax.SetText(storegap.. "storegap").SetColor("#FF697A")
+
+
+	UI.CreateLabel(row6).SetText('Gold gap2: ')
+	UI.CreateLabel(row6).SetText(gap2)
+
+	UI.CreateLabel(row7).SetText('Gold storeC: ')
+UI.CreateLabel(row7).SetText(storeC)
+
+	UI.CreateLabel(row8).SetText('gold storegap: ')
+	UI.CreateLabel(row8).SetText(storegap)
+
+
+
 
 
 	CalSent.SetText(goldSending).SetColor("#45ad1c")
