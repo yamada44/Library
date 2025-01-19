@@ -75,8 +75,9 @@ function AccountEntityUpdate(Entity,Game)
 
 	for i,v in pairs (Entity) do
 		if v.Status == "A" then
-
+			print(Game.Game.TurnNumber, "Turn number", #v.OwnerHistory)
 			if v.OwnerHistory[Game.Game.TurnNumber] == nil then v.OwnerHistory[Game.Game.TurnNumber] = {Turn = Game.Game.TurnNumber,List = v.owners}
+				print(Game.Game.TurnNumber, "Turn number", #v.OwnerHistory)
 			end
 		end
 	
