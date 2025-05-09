@@ -349,7 +349,7 @@ end
 function PlayerEntityCreation(publicdate)
 		--Entity Creation
 		for i,v in pairs (Game.ServerGame) do
-		print(i,v)
+		print(i,v .. "----------")
 		end
 	local TrashID = publicdate.RandomVar.DeleteID
 
