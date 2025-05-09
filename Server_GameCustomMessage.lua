@@ -348,7 +348,9 @@ end
 --Creating all entities for the first time
 function PlayerEntityCreation(publicdate)
 		--Entity Creation
-
+		for i,v in pairs (Game.ServerGame) do
+		print(i,v)
+		end
 	local TrashID = publicdate.RandomVar.DeleteID
 
 	if publicdate.Entity == nil then publicdate.Entity = {} end
@@ -358,6 +360,7 @@ function PlayerEntityCreation(publicdate)
 				short.Name = Game.Game.Players[ID].DisplayName(nil, false)
 				short.ID = ID
 				short.Status = "P"
+				
 				short.Gold = Game.ServerGame.LatestTurnStanding.NumResources(ID, WL.ResourceType.Gold)
 				-- Income data
 				local standing = Game.ServerGame.LatestTurnStanding
