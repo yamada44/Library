@@ -29,7 +29,11 @@ function Server_AdvanceTurn_Order(game, order, result, skipThisOrder, addNewOrde
 
 				if MyID < 0 then MyID = 0 end
 
-				local localmessage = '(Local info) \n' .. goldsent  .. ' gold sent from ' .. publicgamedata.Entity[ourid].Name .. ' to ' .. publicgamedata.Entity[targetPlayerID].Name .. '\n#:' .. Trannumber
+				local localmessage = '(Local info) \n' .. goldsent -- .. ' gold sent from ' ..  .. ' to ' .. .. '\n#:' .. Trannumber
+				--local localmessage =
+				local localmessage = publicgamedata.Entity[ourid].Name
+				local localmessage =  publicgamedata.Entity[targetPlayerID].Name
+				--local localmessage =
 				local publicmessage =  '(public info) \nUnknown amount of gold sent from ' .. publicgamedata.Entity[ourid].Name .. ' to ' .. publicgamedata.Entity[targetPlayerID].Name .. '\n#:' .. Trannumber
 				local revealmessage =  '(public info) \n' .. goldsent  .. ' gold sent from ' .. publicgamedata.Entity[ourid].Name .. ' to ' .. publicgamedata.Entity[targetPlayerID].Name .. '\n#:' .. Trannumber
 				local hiddenmessage =  '(public info) \n' .. goldsent .. ' gold sent from an unknown party to ' .. publicgamedata.Entity[targetPlayerID].Name .. '\n#:' .. Trannumber

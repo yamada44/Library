@@ -1147,20 +1147,6 @@ function CrunchNumbers(Tax,Percent,truetax)
 
 	end
 
-
-	UI.CreateLabel(row6).SetText('Gold gap2: ')
-	UI.CreateLabel(row6).SetText(gap2)
-
-	UI.CreateLabel(row7).SetText('Gold storeC: ')
-UI.CreateLabel(row7).SetText(storeC)
-
-	UI.CreateLabel(row8).SetText('gold storegap: ')
-	UI.CreateLabel(row8).SetText(storegap)
-
-
-
-
-
 	CalSent.SetText(goldSending).SetColor("#45ad1c")
 	CalReci.SetText(math.floor(actualGoldSent)).SetColor("#f8ff0b")
 	CalTax.SetText(goldSending - math.floor(actualGoldSent)).SetColor("#FF697A")
