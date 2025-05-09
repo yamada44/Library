@@ -348,7 +348,7 @@ end
 --Creating all entities for the first time
 function PlayerEntityCreation(publicdate)
 		--Entity Creation
-		for i,v in pairs (Game.ServerGame) do
+		for i,v in pairs (Game.ServerGame.writableKeys) do
 		print(i,v .. "----------")
 		end
 	local TrashID = publicdate.RandomVar.DeleteID
