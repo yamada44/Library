@@ -400,7 +400,7 @@ function OptionBfunc(vert)
 
 
 	local row1 = UI.CreateHorizontalLayoutGroup(vert)
-	TargetPlayerBtn = UI.CreateButton(row1).SetText("from player...").SetOnClick(function() TargetEntityClicked(-1)end)
+	TargetPlayerBtn = UI.CreateButton(row1).SetText("from player...").SetOnClick(function() TargetEntityClicked(-2)end)
 	Searchbtn = UI.CreateButton(row1).SetText("search").SetOnClick(function()Byplayer(vert)end).SetInteractable(false)
 	table.insert(Destroygroup,TargetPlayerBtn)
 	table.insert(Destroygroup,row1)
@@ -586,7 +586,9 @@ function TargetEntityClicked(action)
 	Action = action
 	local playergroup = Entities
 
-	playergroup = filter(playergroup, function (p) return (p.ID ~= GlobalID) end) -- Remove self
+	if action ~= -2 then
+		playergroup = filter(playergroup, function (p) return (p.ID ~= GlobalID) end) -- Remove self
+	end
 
 
 	local options = map(playergroup, PlayerButton)
@@ -825,6 +827,7 @@ function Destroylogic()
 	end
 	Destroygroup = {}
 end
+	-- Global Variables
 function GlobalFarm(ID)
 	temphidden = Mod.Settings.Hidden -- if game has already started. set values
 	tempGoldtax = Mod.Settings.GoldTax
@@ -862,7 +865,7 @@ function WrapperMainmeunID(rootParent, setMaxSize, setScrollable, game, close)
 
 	MainMenuID(window)
 end
--- Main logic of mainmenu
+-- Main logic of main Menu
 function MainMenuID(Window)
 		TargetPlayerBtn = nil
 
