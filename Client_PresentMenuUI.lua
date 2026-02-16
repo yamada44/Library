@@ -700,6 +700,7 @@ function PlayerButton(entity)
 					TargetPlayerBtn.SetColor('#FFFFFF') 
 					Giftbtn.SetText("Gift")
 				end 
+				Giftbtn = nil
 			end
 
 			if Searchbtn ~= nil then Searchbtn.SetInteractable(true) end
@@ -712,6 +713,7 @@ function PlayerButton(entity)
 					TargetPlayerBtn.SetColor('#FFFFFF')
 					AdvanceBtn.SetText("Gift")
 				end 
+				AdvanceBtn = nil
 			 end 
 		end
 		--Create Account logic
