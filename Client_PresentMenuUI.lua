@@ -546,9 +546,10 @@ close()
 			Game.Orders = orders
 			if setup ~= 10 then
 			Dialogwindow(8,nil,nil) end 
+
 		end
 		publicdate = Mod.PublicGameData
-
+		GoldSetbtn, Cont, Reveal,KickInput,GoldText = nil
 	end)
 end
 -- Serverload Non Payment
